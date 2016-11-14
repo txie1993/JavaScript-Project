@@ -46,7 +46,7 @@ In addition to the webpack entry file, there will be two scripts involved in thi
 
 ### Implementation Timeline
 
-**Day 1**: Setup all necessary Node modules, including getting webpack up and running and `Easel.js` installed.  Create `webpack.config.js` as well as `package.json`.  Write a basic entry file and the bare bones of the scripts outlined above.  Learn the basics of `Easel.js`.  Goals for the day:
+**Day 1**: Setup all necessary Node modules, including getting webpack up and running.  Create `webpack.config.js` as well as `package.json`.  Write a basic entry file and the bare bones of the scripts outlined above.  Goals for the day:
 
 - Get a green bundle with `webpack`
 - Create draggable cars with JQuery
