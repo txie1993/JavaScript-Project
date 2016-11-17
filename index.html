@@ -9,7 +9,22 @@
 </head>
 
 <body>
-    <canvas></canvas>
+    <img id="yellowCar" src="http://opengameart.org/sites/default/files/car1.png">
+    <img id="redCar" src="http://opengameart.org/sites/default/files/car2.png">
+    <img id="orangeCar" src="http://opengameart.org/sites/default/files/car3.png">
+    <img id="purpleCar" src="http://opengameart.org/sites/default/files/car4.png">
+    <img id="blueCar" src="http://opengameart.org/sites/default/files/car5.png">
+    <img id="greenCar" src="http://opengameart.org/sites/default/files/car6.png">
+
+    <div class="game">
+        <canvas></canvas>
+        <div class="refresh">
+            <i id="reset" class="fa fa-refresh fa-5x" aria-hidden="true"></i>
+            <h2>Reset</h2>
+        </div>
+    </div>
+
+
     <div class="icons">
         <a href="http://github.com"><i class="fa fa-github fa-5x" aria-hidden="true"></i></a>
         <a href="http://linkedin.com"><i class="fa fa-linkedin-square fa-5x" aria-hidden="true"></i></a>
@@ -25,14 +40,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close">×</span>
-                <h2>Modal Header</h2>
+                <h2>Rush Hour Rules</h2>
             </div>
             <div class="modal-body">
-                <p>Some text in the Modal Body</p>
-                <p>Some other text...</p>
-            </div>
-            <div class="modal-footer">
-                <h3>Modal Footer</h3>
+                <p>Click and drag to move the red car out of the parking lot!</p>
             </div>
         </div>
 
@@ -43,7 +54,7 @@
         const btn = document.getElementById("open");
         const span = document.getElementsByClassName("close")[0];
         btn.onclick = function() {
-            modal.style.display = "block";
+            modal.style.display = "flex";
         }
         span.onclick = function() {
             modal.style.display = "none";

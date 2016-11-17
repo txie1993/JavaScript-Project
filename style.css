@@ -7,6 +7,10 @@ body {
     height: 100vh;
 }
 
+img{
+  display: none;
+}
+
 canvas {
     margin: 0 auto;
 }
@@ -18,6 +22,22 @@ a {
 h1 {
     font-size: 5em;
     color: #eebd3c;
+    cursor: default;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: black;
+}
+
+.game {
+  position: relative;
+}
+
+.refresh{
+  color: white;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 750px;
+  bottom: 0;
 }
 
 .icons {
@@ -41,41 +61,28 @@ h1 {
 
 .modal {
     display: none;
-    /* Hidden by default */
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
     position: fixed;
-    /* Stay in place */
     z-index: 1;
-    /* Sit on top */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
     overflow: auto;
-    /* Enable scroll if needed */
     background-color: rgb(0, 0, 0);
-    /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
 }
-
-
-/* Modal Content/Box */
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
-    /* 15% from the top and centered */
+    margin: auto;
     top: 0;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    /* Could be more or less, depending on screen size */
 }
-
-
-/* The Close Button */
 
 .close {
     color: #aaa;
@@ -99,24 +106,9 @@ h1 {
     color: white;
 }
 
-
-/* Modal Body */
-
 .modal-body {
     padding: 2px 16px;
 }
-
-
-/* Modal Footer */
-
-.modal-footer {
-    padding: 2px 16px;
-    background-color: #45403e;
-    color: white;
-}
-
-
-/* Modal Content */
 
 .modal-content {
     position: relative;
