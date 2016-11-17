@@ -7,8 +7,29 @@ body {
     height: 100vh;
 }
 
-img{
-  display: none;
+button {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5em;
+    color: #fff;
+    background-color: #6496c8;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px #27496d;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: #417cb8
+}
+
+button:active {
+    background-color: #417cb8;
+    box-shadow: 0 5px #27496d;
+    transform: translateY(5px);
+}
+
+img {
+    display: none;
 }
 
 canvas {
@@ -27,17 +48,43 @@ h1 {
     -webkit-text-stroke-color: black;
 }
 
-.game {
-  position: relative;
+.hidden{
+  display: none;
 }
 
-.refresh{
-  color: white;
+.winscreen{
+  z-index: 1;
   position: absolute;
-  top: 50%;
+  top:50%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
   right: 0;
-  left: 750px;
-  bottom: 0;
+  animation-name: animateleft;
+  animation-duration: 0.5s
+}
+.completescreen{
+  position: absolute;
+  top:20%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  animation-name: animateleft;
+  animation-duration: 0.5s
+}
+
+.game {
+    position: relative;
+}
+
+.refresh {
+    color: white;
+    position: absolute;
+    top: 2%;
+    right: 0;
+    left: 750px;
+    bottom: 0;
 }
 
 .icons {

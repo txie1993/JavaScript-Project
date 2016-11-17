@@ -18,6 +18,21 @@
 
     <div class="game">
         <canvas></canvas>
+        <div id="win" class="hidden">
+          <button type="button" id="nextlevel">Next Level</button>
+          <button type="button" id="resetlevel">Restart This Level</button>
+        </div>
+
+        <div id="complete" class="hidden">
+          <h1>All Done!</h1>
+          <p>
+            You've finished all the levels! Pat yourself on the back.
+          </p>
+
+          <button type="button" id="restart">Restart</button>
+
+        </div>
+
         <div class="refresh">
             <i id="reset" class="fa fa-refresh fa-5x" aria-hidden="true"></i>
             <h2>Reset</h2>
