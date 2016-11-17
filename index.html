@@ -1,10 +1,60 @@
 <html>
-  <head>
-    <title>Rush Hour</title>
-  </head>
 
-  <body>
-    <canvas></canvas>
+<head>
+    <title>Rush Hour</title>
+    <script src="https://use.fontawesome.com/59adb9cc56.js"></script>
     <script type="application/javascript" src="lib/bundle.js"></script>
-  </body>
+    <link href="https://fonts.googleapis.com/css?family=Bangers|Oswald:700" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" media="screen" title="no title">
+</head>
+
+<body>
+    <canvas></canvas>
+    <div class="icons">
+        <a href="http://github.com"><i class="fa fa-github fa-5x" aria-hidden="true"></i></a>
+        <a href="http://linkedin.com"><i class="fa fa-linkedin-square fa-5x" aria-hidden="true"></i></a>
+        <a href="http://github.com"><i class="fa fa-external-link-square fa-5x" aria-hidden="true"></i></a>
+        <a><i id="open" class="fa fa-info-circle fa-5x" aria-hidden="true"></i></a>
+    </div>
+
+    <h1>RUSH HOUR</h1>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">×</span>
+                <h2>Modal Header</h2>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the Modal Body</p>
+                <p>Some other text...</p>
+            </div>
+            <div class="modal-footer">
+                <h3>Modal Footer</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        const modal = document.getElementById('myModal');
+        const btn = document.getElementById("open");
+        const span = document.getElementsByClassName("close")[0];
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
 </html>
