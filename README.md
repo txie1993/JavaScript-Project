@@ -56,9 +56,9 @@ this.pos[0] > left ? this.pos[0] -= 10 : this.pos[0] += 10
 
 ## Future Features
 
-[ ] High score for fewest moves
-[ ] High score for fastest time
-[ ] Custom Levels
-[ ] Difficulty Selector
-[ ] Higher Quality Art
-[ ] Sounds
+- [ ] High score for fewest moves
+- [ ] High score for fastest time
+- [ ] Custom Levels
+- [ ] Difficulty Selector
+- [ ] Higher Quality Art
+- [ ] Sounds
