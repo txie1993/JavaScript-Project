@@ -53,6 +53,7 @@ h2 {
 }
 
 .hidden {
+  margin-left: -9999999px;
     display: none;
 }
 
