@@ -1,77 +1,64 @@
-## JS Rush Hour
+# JS Rush Hour
 
-### Background
+[Live](http://txie1993.githib.io/Rush-Hour)
 
-Rush Hour is a classic game in which the player must move around cars in a parking lot in order for one car to make it to the exit. Cars can only move back and forth in straight lines, creating quite a bit of complexity.
+![rushhour](https://github.com/txie1993/JavaScript-Project/blob/master/wireframe.png?raw=true)
 
-1) The game ends when the player moves the red car out of bounds.
-2) Cars can only move back and forth if they are horizontal, or up and down if they are vertical.
-3) Cars cannot be turned or removed.
+## Background
 
-### Functionality & MVP  
+Rush Hour is a classic game in which the player must move around cars in a parking lot in order for one car to make it to the exit.
 
-With this Rush Hour implementation, users will be able to:
+* The level ends when the player moves the red car out of bounds.
+* Cars can only move back and forth if they are horizontal, or up and down if they are vertical.
+* Cars cannot be turned or removed.
 
-- [ ] Drag to move cars along their axes
-- [ ] Reset the board
-- [ ] Start from preset demo initial states
+## Technologies and Languages Used
 
-In addition, this project will include:
-
-- [ ] An About modal describing the background and rules of the game
-- [ ] A production Readme
-
-### Wireframes
-
-This app will consist of a single screen with game board, and nav links to the Github, my LinkedIn,
-and the About modal.  Game controls will include click to drag and a reset button. Given the fact that the controls are relatively simple, almost the entire page will be dedicated to the game, and social media links may be put into the modal.
-
-![wireframes](https://github.com/txie1993/JavaScript-Project/blob/master/wireframe.png?raw=true)
-
-### Architecture and Technologies
-
-**NB**: one of the main things you should be researching and deciding upon while you write this proposal is what technologies you plan to use.  Identify and create a plan of attack for the major technical challenges in your project.  It's okay if you don't have all the details of implementation fleshed out, but you should have a solid roadmap by Monday morning.
-
-This project will be implemented with the following technologies:
-
-- Vanilla JavaScript and `jquery` for overall structure and game logic,
-- `HTML5 Canvas` for DOM manipulation and rendering,
-- Webpack to bundle and serve up the various scripts.
-
-In addition to the webpack entry file, there will be two scripts involved in this project:
-
-`board.js`: this script will handle the logic for creating and updating the necessary `Easel.js` elements and rendering them to the DOM.
-
-`car.js`: this lightweight script will house the constructor and update functions for the `Car` objects.  Each `Car` will have a size and direction and a "main" boolean to determine if that car will determine the gamestate.
-
-### Implementation Timeline
-
-**Day 1**: Setup all necessary Node modules, including getting webpack up and running.  Create `webpack.config.js` as well as `package.json`.  Write a basic entry file and the bare bones of the scripts outlined above.  Goals for the day:
-
-- Get a green bundle with `webpack`
-- Create draggable cars with JQuery
-
-**Day 2**: Get the basic game structure working. I should have a board (formatting is a maybe at this point).
-
-- Display a board that knows when the target car has left the parking lot. The game should know when it is over.
-
-**Day 3**: Create the modal
-
-- Get a fully formatted info modal working.
-- Work on formatting the game.
+* JavaScript (ES6)
+* HTML5 canvas
+* CSS3
 
 
-**Day 4**: Polish
+## Implementation Details
 
-- Be fully styled
-- Possibly add finishing touches such as sounds to the game
-- Create several solvable starting states
+The biggest challenge to building this project was creating a workaround for collision with the drag-and-drop interface. In most 2D games, movement is controlled by pressing buttons on a keyboard or controller, but some problems arise with another input method. Namely, the ability to clip through obstacles was a large hurdle to overcome: if the cars in Rush Hour were controlled by the arrow keys, I could simply disable a direction if a car was pressed against another. However, because the car was always supposed to be at the cursor's position, the player could simply warp the car to the other side of an obstacle by moving the mouse over (provided there was enough room for the car on the other side for it to not overlap with an obstacle)! Disabling mouse controls entirely while a car was in a collided state with another car wasn't a feasible option, as there was no simple way of knowing when to re-enable a car for movement.
+
+The answer is simple, right? Just disable movement to one direction when you hit a car in that direction! Like this!
+
+```javascript
+let left = e.pageX - this.len / 2 - this.offsetLeft;
+
+    if (!coll)(this.pos[0] = left);
 
 
-### Bonus features
+    else {
+        if (coll.pos[0] === this.oppPos[0]) { // if we are hitting them from the left
+            // console.log("left side collision");
+            if (this.pos[0] >= left) this.pos[0] = left; // we can move left
+        } else if (coll.oppPos[0] === this.pos[0]) { // if we are hitting them from the right
+            // console.log("right side collision");
+            if (this.pos[0] < left) this.pos[0] = left; // we can move right
+        }
+    }
+```
 
-There are many directions this cellular automata engine could eventually go.  Some anticipated updates are:
+And now, we run into another problem: The browser simply doesn't poll the mouse frequently enough for this to work. The way hitboxes are set up, collisions are detected by the outline of a car's rectangle, and if two cars overlap, neither of them can move. In an ideal world, we would poll our mouse something along the lines of 1000 times a second like in a competitive FPS, but instead, we can only poll our mouse 60 times a second max with Canvas. As a result, dragging a car into another car will, 99 times out of 100, result in a game-breaking hitbox overlap.
 
-- [ ] Multiple game board sizes
-- [ ] High score/low time keeper in browser cookies
-- [ ] New car shapes
+But why not just warp the car back into place if it overlaps? I tried that by moving the car back to the side of the obstacle it supposedly hit, as determined by our car's position relative to the obstacle's midpoint. This could be exploited by dragging the mouse fast enough that the game would warp the car to the other side of the obstacle!
+
+In the end, I made a compromise: I traded a lot of UI smoothness for bug-free navigation. Now, when the mouse is held, the selected car will "follow" the cursor, moving in a similar way to an arrow key-controlled object. This way, cars will never overlap, but the car often times will not move as fast as the mouse, which can be frustrating to the user. 10 px/frame was the best compromise I could make on the car's movement speed being relatively smooth.
+
+Unfortunately, increasing the framerate of the game to increase smoothness was not an option, as some browsers cannot even support 25 FPS on a Canvas game, and increasing minimum hardware requirements for a game is never a good idea when I don't know who the end user will be.
+
+```javascript
+this.pos[0] > left ? this.pos[0] -= 10 : this.pos[0] += 10
+```
+
+## Future Features
+
+[ ] High score for fewest moves
+[ ] High score for fastest time
+[ ] Custom Levels
+[ ] Difficulty Selector
+[ ] Higher Quality Art
+[ ] Sounds
