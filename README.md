@@ -14,7 +14,7 @@ With this Rush Hour implementation, users will be able to:
 
 - [ ] Drag to move cars along their axes
 - [ ] Reset the board
-- [ ] Choose from preset demo initial states
+- [ ] Start from preset demo initial states
 
 In addition, this project will include:
 
@@ -74,4 +74,4 @@ There are many directions this cellular automata engine could eventually go.  So
 
 - [ ] Multiple game board sizes
 - [ ] High score/low time keeper in browser cookies
-- [ ] New car shapes 
+- [ ] New car shapes
