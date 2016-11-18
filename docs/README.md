@@ -26,7 +26,7 @@ In addition, this project will include:
 This app will consist of a single screen with game board, and nav links to the Github, my LinkedIn,
 and the About modal.  Game controls will include click to drag and a reset button. Given the fact that the controls are relatively simple, almost the entire page will be dedicated to the game, and social media links may be put into the modal.
 
-![wireframes](https://github.com/txie1993/JavaScript-Project/blob/master/wireframe.png?raw=true)
+![wireframes](https://github.com/txie1993/Rush-Hour/blob/master/docs/wireframe.png?raw=true)
 
 ### Architecture and Technologies
 

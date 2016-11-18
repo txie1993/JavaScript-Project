@@ -1,8 +1,8 @@
 # JS Rush Hour
 
-[Live](http://txie1993.githib.io/Rush-Hour)
+[Live](https://txie1993.github.io/Rush-Hour)
 
-![rushhour](https://github.com/txie1993/JavaScript-Project/blob/master/wireframe.png?raw=true)
+![rushhour](https://github.com/txie1993/Rush-Hour/blob/master/docs/Screen%20Shot%202016-11-17%20at%2011.03.30%20PM.png?raw=true)
 
 ## Background
 
