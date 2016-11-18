@@ -48,6 +48,10 @@ h1 {
     -webkit-text-stroke-color: black;
 }
 
+h2 {
+  font-family: 'Fjalla One', sans-serif;
+}
+
 .hidden {
     display: none;
 }
@@ -79,16 +83,7 @@ h1 {
     position: relative;
 }
 
-.refresh {
-    color: white;
-    position: absolute;
-    top: 2%;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    width: 100px;
-    height: 200px;
-}
+
 
 .icons {
     width: 600px;
