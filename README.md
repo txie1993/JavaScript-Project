@@ -58,7 +58,7 @@ this.pos[0] > left ? this.pos[0] -= 10 : this.pos[0] += 10
 
 I thought of an idea that stemmed off of a previous version of the game: the one with the game logic that allowed the user to move the mouse to the other side of an obstacle to warp through it...
 
-All I needed to do was make sure that the mouse was within a certain distance of the vehicle, so I created a limitation that makes sure the mouse is within 170px of the car before moving. I chose 170px because each car is at least 170px tall or wide. This way, the cars cannot phase through one another AND I get direct mouse input control.
+All I needed to do was make sure that the mouse was within a certain distance of the vehicle, so I created a limitation that makes sure the mouse is within 170px of the car before moving. I chose 170px because each car is at least 180px tall or wide. This way, the cars cannot phase through one another AND I get direct mouse input control.
 
 Here is the final method for dragging the car:
 
