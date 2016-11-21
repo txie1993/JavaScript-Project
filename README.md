@@ -54,6 +54,55 @@ Unfortunately, increasing the framerate of the game to increase smoothness was n
 this.pos[0] > left ? this.pos[0] -= 10 : this.pos[0] += 10
 ```
 
+**UPDATE** 11/20/2016
+
+I thought of an idea that stemmed off of a previous version of the game: the one with the game logic that allowed the user to move the mouse to the other side of an obstacle to warp through it...
+
+All I needed to do was make sure that the mouse was within a certain distance of the vehicle, so I created a limitation that makes sure the mouse is within 170px of the car before moving. I chose 170px because each car is at least 170px tall or wide. This way, the cars cannot phase through one another AND I get direct mouse input control.
+
+Here is the final method for dragging the car:
+
+```javascript
+
+drag(e) {
+    if (this.draggable) {
+        let left = e.pageX - this.len / 2 - this.offsetLeft;
+        let right = e.pageX + this.len / 2 - this.offsetLeft;
+        let top = e.pageY - this.height / 2 - this.offsetTop;
+        let bot = e.pageY + this.height / 2 - this.offsetTop;
+
+        let coll = this.colliding(top, bot, left, right);
+
+        if (this.inBounds(e.pageX, e.pageY) && (this.mouseNearCar(e.pageX, e.pageY)) && !coll) {
+            if (this.horizontal) {
+                this.pos[0] = left;
+                this.oppPos[0] = this.pos[0] + this.len;
+            } else {
+                this.pos[1] = top;
+                this.oppPos[1] = this.pos[1] + this.height;
+            }
+        }
+    }
+}
+
+inBounds(x, y, lowX = this.offsetLeft, highX = 600 + this.offsetLeft, lowY = this.offsetTop, highY = 600 + this.offsetTop) {
+    return (
+        x - this.len / 2 >= lowX &&
+        x + this.len / 2 <= highX &&
+        y - this.height / 2 >= lowY &&
+        y + this.height / 2 <= highY
+    );
+}
+mouseNearCar(x, y) {
+    return (
+        this.pos[0] + this.offsetLeft - 170 < x &&
+        this.oppPos[0] + this.offsetLeft + 170 > x &&
+        this.pos[1] + this.offsetTop - 170 < y &&
+        this.oppPos[1] + this.offsetTop + 170 > y
+    );
+}
+```
+
 ## Future Features
 
 - [ ] High score for fewest moves
